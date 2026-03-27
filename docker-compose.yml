@@ -1,0 +1,17 @@
+version: "3.4"
+services:
+  ddns-get-ip:
+    image: chtake/unifi-dyndns:latest
+    environment:
+      - UNIFI_GATEWAY_IP=10.10.10.1
+      - UNIFI_USERNAME=UNIFI_USERNAME
+      - UNIFI_PASSWORD=UNIFI_PASSWORD
+      - FETCH_PROTO=ipv4
+      - FETCH_IFACE=eth4
+      - PROVIDER_USERNAME=domains@example.com
+      - PROVIDER_PASSWORD=mypassword
+      - PROVIDER_API=dyndns.variomedia.de/nic/update?hostname=%h&myip=%i
+      - DDNS_DOMAIN=dyn-home.example.com
+      - RUN_INTERVAL_SECONDS=300
+      - DNS_LOOKUP_NAMESERVER=8.8.8.8
+    restart: always
